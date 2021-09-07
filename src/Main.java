@@ -5,6 +5,8 @@
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -90,6 +92,14 @@ public class Main extends Application {
         vBox.getChildren().addAll(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10);
         root.setMouseTransparent(true);
 
+        favImgBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                favImg1.setVisible(true);
+                favImg2.setVisible(true);
+                favImg3.setVisible(true);
+            }
+        });
 
         return new AnchorPane(vBox, root);
     }
