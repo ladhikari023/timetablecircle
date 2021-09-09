@@ -18,7 +18,8 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-
+    int numOfPointsOnCircle = 360;
+    int timeTable = 2;
     AnchorPane root = new AnchorPane();
 
     @Override
@@ -94,9 +95,18 @@ public class Main extends Application {
         root.setMouseTransparent(true);
 
         AnimationTimer timer = new AnimationTimer() {
+            long initialTime = 0;
             @Override
             public void handle(long now) {
-
+                if ((now - initialTime) + slider1.getValue() * 10_000_000 > 1_000_000_000) {
+                    int val=8;
+                    if(val!=(int)slider2.getValue()){
+                        numOfPointsOnCircle=(int) slider2.getValue();
+                    }
+                    drawCircle();
+                    initialTime = now;
+                    timeTable++;
+                }
             }
         };
 
@@ -110,6 +120,10 @@ public class Main extends Application {
         });
 
         return new AnchorPane(vBox, root);
+    }
+
+    private void drawCircle() {
+
     }
 }
 
