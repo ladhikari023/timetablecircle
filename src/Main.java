@@ -26,9 +26,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import static java.lang.StrictMath.*;
 import static java.lang.StrictMath.toRadians;
 
@@ -40,8 +37,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Project 1");
+        Scene scene = new Scene(circleScene(), 900, 800);
+        stage.setTitle("TimeTableCircle");
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    public AnchorPane circleScene() {
         VBox vBox = new VBox(20);
         vBox.setLayoutX(10);
         vBox.setLayoutY(20);
@@ -185,15 +191,8 @@ public class Main extends Application {
                 timer.stop();
             }
         });
-        AnchorPane circleScene = new AnchorPane();
-        circleScene.getChildren().addAll(vBox,root);
-        Scene scene = new Scene(circleScene, 800, 800);
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    public static void main(String[] args) {
-        launch(args);
+        return new AnchorPane(vBox, root);
     }
 
     private void drawCircle() {
