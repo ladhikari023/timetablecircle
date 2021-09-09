@@ -2,6 +2,14 @@
     Name: Laxman Adhikari
     CS 351
     Project 1
+    In this project, I have made an animated circle whose working is taken from the instruction
+    video. I have made a working formula to draw the points and connect it with the appropriate lines
+    which would create a circle and in each cycle the points update and circle takes a different shape.
+    When a complete loop ends, it again repeats the same cycle. I have generated random colors for the
+    lines which would make circle different color in each loop. I have added controls like Run, Pause,
+    Restart, and also we can jump to a specific timetable and specific points. Moreover, I have added
+    two sliders where one is for increasing frames per second and other one is for increasing points in
+    circle. I have added three favourite images which can be navigated by three buttons.
  */
 
 import javafx.animation.AnimationTimer;
