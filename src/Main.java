@@ -4,6 +4,7 @@
     Project 1
  */
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -91,6 +92,13 @@ public class Main extends Application {
         //Added all HBox layouts in VBox layout
         vBox.getChildren().addAll(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10);
         root.setMouseTransparent(true);
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+            }
+        };
 
         favImgBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
