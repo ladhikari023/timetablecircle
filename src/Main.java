@@ -50,7 +50,7 @@ public class Main extends Application {
         HBox row10 = new HBox(13);
 
         //Created Buttons for Controls
-        Button startBtn = new Button("Run");
+        Button runBtn = new Button("Run");
         Button pauseBtn = new Button("Pause");
         Button restartBtn = new Button("Restart");
         Button enterBtn = new Button("Enter");
@@ -78,7 +78,7 @@ public class Main extends Application {
         Slider slider2 = new Slider(0, 360, 5);
 
         //Added all buttons,text-fields,sliders and labels in HBox layout
-        row1.getChildren().addAll(startBtn);
+        row1.getChildren().addAll(runBtn);
         row2.getChildren().addAll(pauseBtn, txt3, slider1);
         row3.getChildren().addAll(restartBtn, txt4, slider2);
         row4.getChildren().addAll(txt1, txtField1);
@@ -110,12 +110,68 @@ public class Main extends Application {
             }
         };
 
+        runBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timer.start();
+            }
+        });
+        pauseBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timer.stop();
+            }
+        });
+        restartBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timeTable = 2;
+                numOfPointsOnCircle = 360;
+                timer.start();
+            }
+        });
+        enterBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timeTable = Integer.parseInt(txtField1.getText());
+                numOfPointsOnCircle = Integer.parseInt(txtField2.getText());
+                drawCircle();
+                timer.stop();
+            }
+        });
         favImgBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 favImg1.setVisible(true);
                 favImg2.setVisible(true);
                 favImg3.setVisible(true);
+            }
+        });
+        favImg1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timeTable = 15;
+                numOfPointsOnCircle = 360;
+                drawCircle();
+                timer.stop();
+            }
+        });
+        favImg2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timeTable = 150;
+                numOfPointsOnCircle = 360;
+                drawCircle();
+                timer.stop();
+            }
+        });
+        favImg3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timeTable = 240;
+                numOfPointsOnCircle = 360;
+                drawCircle();
+                timer.stop();
             }
         });
 
