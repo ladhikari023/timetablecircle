@@ -40,17 +40,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(InitialScene(), 800, 800);
         stage.setTitle("Project 1");
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    public AnchorPane InitialScene() {
         VBox vBox = new VBox(20);
         vBox.setLayoutX(10);
         vBox.setLayoutY(20);
@@ -194,8 +185,15 @@ public class Main extends Application {
                 timer.stop();
             }
         });
+        AnchorPane circleScene = new AnchorPane();
+        circleScene.getChildren().addAll(vBox,root);
+        Scene scene = new Scene(circleScene, 800, 800);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        return new AnchorPane(vBox, root);
+    public static void main(String[] args) {
+        launch(args);
     }
 
     private void drawCircle() {
