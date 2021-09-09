@@ -141,10 +141,14 @@ public class Main extends Application {
         enterBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                timeTable = Integer.parseInt(txtField1.getText());
-                numOfPointsOnCircle = Integer.parseInt(txtField2.getText());
-                drawCircle();
-                timer.stop();
+                try {
+                    timeTable = Integer.parseInt(txtField1.getText());
+                    numOfPointsOnCircle = Integer.parseInt(txtField2.getText());
+                    drawCircle();
+                    timer.stop();
+                }catch (Exception e){
+                    System.out.println("Please enter the time table and points first!!");
+                }
             }
         });
         favImgBtn.setOnAction(new EventHandler<ActionEvent>() {
