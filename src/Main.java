@@ -14,7 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.lang.StrictMath.*;
+import static java.lang.StrictMath.toRadians;
 
 
 public class Main extends Application {
@@ -75,7 +83,7 @@ public class Main extends Application {
 
         //Created Slider to control time and points in circle
         Slider slider1 = new Slider(0, 100, 10);
-        Slider slider2 = new Slider(0, 360, 5);
+        Slider slider2 = new Slider(0, 360, 8);
 
         //Added all buttons,text-fields,sliders and labels in HBox layout
         row1.getChildren().addAll(runBtn);
@@ -179,7 +187,18 @@ public class Main extends Application {
     }
 
     private void drawCircle() {
-
+        root.getChildren().clear();
+        Color color = Color.color(Math.random(),Math.random(),Math.random());
+        for (int i = 0; i < numOfPointsOnCircle; i++){
+            int endPoints = (timeTable * i) % 360;
+            Line line = new Line();
+            line.setStartX(cos(toRadians(360 * i / numOfPointsOnCircle)) * 280 + 500f);
+            line.setStartY(sin(toRadians(360 * i / numOfPointsOnCircle)) * 280 + 500f);
+            line.setEndX(cos(toRadians(360 * endPoints / numOfPointsOnCircle)) * 280 + 500f);
+            line.setEndY(sin(toRadians(360 * endPoints / numOfPointsOnCircle)) * 280 + 500f);
+            line.setStroke(color);
+            root.getChildren().addAll(line);
+        }
     }
 }
 
