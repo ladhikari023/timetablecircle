@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 import static java.lang.StrictMath.*;
 import static java.lang.StrictMath.toRadians;
 
-
+/* This is the main class of this program. This is the only class for project 1.*/
 public class Main extends Application {
     int numOfPointsOnCircle = 360;
     int timeTable = 2;
@@ -46,7 +46,11 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    /* Created a Layout circleScene() which is added to the Scene.
+    * Inside this method, I have also created VBox and HBox layouts to hold the buttons, texts and sliders
+    * I have also added root layout in the return of this method. root method holds the circle display
+    * I have called a method 'drawCircle' which has the logic of how circle is drawn
+    * */
     public AnchorPane circleScene() {
         VBox vBox = new VBox(20);
         vBox.setLayoutX(10);
@@ -113,6 +117,7 @@ public class Main extends Application {
             public void handle(long now) {
                 if ((now - initialTime) + slider1.getValue() * 10_000_000 > 1_000_000_000) {
                     int val=8;
+                    // Checking if we have any change in slider2 which controls number of points in circles
                     if(val!=(int)slider2.getValue()){
                         numOfPointsOnCircle=(int) slider2.getValue();
                     }
@@ -195,6 +200,13 @@ public class Main extends Application {
         return new AnchorPane(vBox, root);
     }
 
+    /*
+     * In this method, I have written logic of circle.
+     * Cleared the layout everytime animation starts
+     * Generated random rgb values and assigned it to the stroke of line
+     * Connected lines on two points obtained from the idea of video
+     * Added line on root layout
+     */
     private void drawCircle() {
         root.getChildren().clear();
         Color color = Color.color(Math.random(),Math.random(),Math.random());
